@@ -1,19 +1,6 @@
-export type Classificacao = "Bug" | "Suporte" | "Integração" | "Customização" | "Melhoria"
-export type Criticidade = "Alto" | "Intermediário" | "Baixo"
-export type StatusChamado = "aberto" | "fechado" | "pendente"
+import type { Chamado, ChamadoDetalhes, Interacao } from "./chamado/types"
 
-export interface Chamado {
-  id: number
-  titulo: string
-  responsavel: string
-  cliente: string
-  dataCriacao: string
-  interacoes: number
-  ultimaInteracao: string
-  classificacao: Classificacao
-  criticidade: Criticidade
-  status: StatusChamado
-}
+export type { Chamado } from "./chamado/types"
 
 export const statsData = {
   totalChamados: 11565,
@@ -22,18 +9,20 @@ export const statsData = {
   totalInteracoes: 48320,
 }
 
-export const ultimosChamados: Chamado[] = [
+export const allChamados: Chamado[] = [
   {
     id: 151529,
     titulo: "PEDIDOS COM ESTRUTURA INCORRETA",
     responsavel: "Giovana Lana",
     cliente: "Teuto",
     dataCriacao: "12/02/2026 14:37",
-    interacoes: 2,
-    ultimaInteracao: "12/02/2026 15:43",
+    interacoes: 4,
+    ultimaInteracao: "12/02/2026 17:22",
     classificacao: "Bug",
     criticidade: "Alto",
     status: "aberto",
+    ferramenta: "PDV Link Plus",
+    statusInterno: "Pendente análise",
   },
   {
     id: 151528,
@@ -46,6 +35,8 @@ export const ultimosChamados: Chamado[] = [
     classificacao: "Bug",
     criticidade: "Intermediário",
     status: "aberto",
+    ferramenta: "Foco PDV",
+    statusInterno: "Em desenvolvimento",
   },
   {
     id: 151527,
@@ -58,6 +49,8 @@ export const ultimosChamados: Chamado[] = [
     classificacao: "Customização",
     criticidade: "Baixo",
     status: "aberto",
+    ferramenta: "PDV Link Plus",
+    statusInterno: "Pendente análise",
   },
   {
     id: 151525,
@@ -70,6 +63,8 @@ export const ultimosChamados: Chamado[] = [
     classificacao: "Suporte",
     criticidade: "Alto",
     status: "fechado",
+    ferramenta: "Foco PDV",
+    statusInterno: "Publicada",
   },
   {
     id: 151524,
@@ -82,6 +77,8 @@ export const ultimosChamados: Chamado[] = [
     classificacao: "Suporte",
     criticidade: "Intermediário",
     status: "fechado",
+    ferramenta: "Foco PDV",
+    statusInterno: "Publicada",
   },
   {
     id: 151523,
@@ -94,6 +91,8 @@ export const ultimosChamados: Chamado[] = [
     classificacao: "Melhoria",
     criticidade: "Baixo",
     status: "aberto",
+    ferramenta: "PDV Link Plus",
+    statusInterno: "Pendente análise",
   },
   {
     id: 151522,
@@ -106,6 +105,8 @@ export const ultimosChamados: Chamado[] = [
     classificacao: "Suporte",
     criticidade: "Intermediário",
     status: "aberto",
+    ferramenta: "Foco PDV",
+    statusInterno: "Em desenvolvimento",
   },
   {
     id: 151521,
@@ -118,6 +119,8 @@ export const ultimosChamados: Chamado[] = [
     classificacao: "Bug",
     criticidade: "Alto",
     status: "aberto",
+    ferramenta: "PDV Link Plus",
+    statusInterno: "Em desenvolvimento",
   },
   {
     id: 151520,
@@ -130,6 +133,8 @@ export const ultimosChamados: Chamado[] = [
     classificacao: "Bug",
     criticidade: "Alto",
     status: "aberto",
+    ferramenta: "Foco PDV",
+    statusInterno: "Pendente análise",
   },
   {
     id: 151519,
@@ -142,12 +147,9 @@ export const ultimosChamados: Chamado[] = [
     classificacao: "Bug",
     criticidade: "Alto",
     status: "aberto",
+    ferramenta: "Foco PDV",
+    statusInterno: "Pendente análise",
   },
-]
-
-export const chamadosPendentes: Chamado[] = []
-
-export const chamadosFechados: Chamado[] = [
   {
     id: 151495,
     titulo: "Liberar acesso Helpdesk",
@@ -159,6 +161,8 @@ export const chamadosFechados: Chamado[] = [
     classificacao: "Suporte",
     criticidade: "Baixo",
     status: "fechado",
+    ferramenta: "Foco PDV",
+    statusInterno: "Publicada",
   },
   {
     id: 151494,
@@ -171,6 +175,8 @@ export const chamadosFechados: Chamado[] = [
     classificacao: "Bug",
     criticidade: "Alto",
     status: "fechado",
+    ferramenta: "Foco PDV",
+    statusInterno: "Publicada",
   },
   {
     id: 151491,
@@ -183,6 +189,8 @@ export const chamadosFechados: Chamado[] = [
     classificacao: "Suporte",
     criticidade: "Alto",
     status: "fechado",
+    ferramenta: "Foco PDV",
+    statusInterno: "Publicada",
   },
   {
     id: 151489,
@@ -195,6 +203,8 @@ export const chamadosFechados: Chamado[] = [
     classificacao: "Integração",
     criticidade: "Baixo",
     status: "fechado",
+    ferramenta: "Foco PDV",
+    statusInterno: "Publicada",
   },
   {
     id: 151486,
@@ -207,6 +217,8 @@ export const chamadosFechados: Chamado[] = [
     classificacao: "Integração",
     criticidade: "Baixo",
     status: "fechado",
+    ferramenta: "Foco PDV",
+    statusInterno: "Publicada",
   },
   {
     id: 151485,
@@ -219,6 +231,8 @@ export const chamadosFechados: Chamado[] = [
     classificacao: "Integração",
     criticidade: "Intermediário",
     status: "fechado",
+    ferramenta: "Foco PDV",
+    statusInterno: "Publicada",
   },
   {
     id: 151474,
@@ -231,6 +245,8 @@ export const chamadosFechados: Chamado[] = [
     classificacao: "Bug",
     criticidade: "Alto",
     status: "fechado",
+    ferramenta: "Foco PDV",
+    statusInterno: "Publicada",
   },
   {
     id: 151473,
@@ -243,5 +259,86 @@ export const chamadosFechados: Chamado[] = [
     classificacao: "Integração",
     criticidade: "Intermediário",
     status: "fechado",
+    ferramenta: "Foco PDV",
+    statusInterno: "Publicada",
   },
 ]
+
+// Convenience sub-lists
+export const ultimosChamados = allChamados.filter((c) => c.status === "aberto").slice(0, 10)
+export const chamadosPendentes: Chamado[] = []
+export const chamadosFechados = allChamados.filter((c) => c.status === "fechado")
+
+// Mock interaction data for ticket 151529
+const interacoes151529: Interacao[] = [
+  {
+    id: 1,
+    idChamado: 151529,
+    usuario: "Danillo Aurelio Cesario de Morais",
+    data: "12/02/2026 14:37",
+    tipo: "publica",
+    mensagem:
+      "Solicito a correção na estrutura dos pedidos no resumo anexo.\nCliente 89000. O cliente foi apropriado para o representante errado, diferente do que foi enviado pelo nosso sistema conforme evidencias em anexo.\n\nREPRESENTANTE NO RELATORIO: 7634 - VD COORD RJ 1 - SELL OUT SIM\nREPRESENTANTE CORRETO: 11294 - VD COORD RJ 2 - SELL OUT SIM",
+    anexos: [
+      { nome: "c_151529_PEDIDOS LUCMED FOCO.xlsb", url: "#", tipo: "xlsb" },
+      { nome: "c_151529_PEDIDOS LUCMED CML.xlsb", url: "#", tipo: "xlsb" },
+    ],
+  },
+  {
+    id: 2,
+    idChamado: 151529,
+    usuario: "Giovana Lana",
+    data: "12/02/2026 15:19",
+    tipo: "publica",
+    mensagem: "Boa tarde\n\nQual seria a local que precisa de correção por gentileza?\n\nFicamos a disposição. Att.",
+  },
+  {
+    id: 3,
+    idChamado: 151529,
+    usuario: "Danillo Aurelio Cesario de Morais",
+    data: "12/02/2026 15:43",
+    tipo: "publica",
+    mensagem:
+      "Nas informações das colunas:\n\nCódigo Regional\nRegional\nCódigo Coordenação\nCoordenação\nCódigo Setor\nSetor Venda\nCódigo Representante\nRepresentante",
+  },
+  {
+    id: 4,
+    idChamado: 151529,
+    usuario: "Giovana Lana",
+    data: "12/02/2026 17:22",
+    tipo: "interna",
+    mensagem: "Estamos averiguando com o cliente via whatsapp e com o Du via teams.",
+    destinatarios: ["Jéssica Rodrigues"],
+  },
+]
+
+// Build detail lookup
+const detalhesMap: Record<number, ChamadoDetalhes> = {}
+
+allChamados.forEach((c) => {
+  detalhesMap[c.id] = {
+    ...c,
+    solicitante: c.cliente,
+    historicoInteracoes:
+      c.id === 151529
+        ? interacoes151529
+        : [
+            {
+              id: 1,
+              idChamado: c.id,
+              usuario: c.responsavel,
+              data: c.dataCriacao,
+              tipo: "publica" as const,
+              mensagem: `Chamado #${c.id} - ${c.titulo}. Interação inicial registrada.`,
+            },
+          ],
+  }
+})
+
+export function getChamadoById(id: number): ChamadoDetalhes | undefined {
+  return detalhesMap[id]
+}
+
+export function getChamados(): Chamado[] {
+  return allChamados
+}
